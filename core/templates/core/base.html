@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>ML FusionLab | {% block title %}{% endblock %} </title>
 </head>
 <body>
@@ -36,15 +37,29 @@
     </header>
     {% block content %}
     {% endblock %}
-    <footer>
-      <div class="container-md bg-body-secondary" style="position: absolute; bottom: 0;">
-        ML FusionLab
-        <div class="container-fluid">
-          <ul class="navbar-nav navbar-expand me-auto mb-2"aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-            <li class="nav-item">Home</li>
-            <li class="nav-item">About us</li>
-            <li class="nav-item">Contact</li>
-          </ul>
+    <footer style="background-color: #dfdfdf; position: absolute; bottom: 0; width:100%;">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4">
+            <h5 class="mb-3 text-dark">ML FusionLab</h5>
+            <p>
+              Your gateway to hassle-free machine learning. Upload your data, and we'll transform it into powerful models, no coding required. Explore the world of AI effortlessly!"
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4 text-right">
+            <ul class="list-unstyled mb-0">
+              <li class="mb-1">
+                <a href="#!" style="color: #4f4f4f;">Home</a>
+              </li>
+              <li class="mb-1">
+                <a href="#!" style="color: #4f4f4f;">Features</a>
+              </li>
+              <li class="mb-1">
+                <a href="#!" style="color: #4f4f4f;">About</a>
+              </li>
+            </ul>
+          </div>
+          
         </div>
       </div>
     </footer>
