@@ -1,4 +1,42 @@
 {% extends 'core/base.html' %}
 {% block title %}Log In{% endblock %}
 
-
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img class="img-fluid" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" alt="Login Image">
+        </div>
+        <div class="col-6">
+            <div class="card-body">
+                <h3 class="card-title">
+                    Welcome Back
+                </h3>
+                <h6 class="card-subtitle">
+                    Login to continue where you left off
+                </h6>
+                <p class="card-text text-body-secondary">Access to the best machine learning models online</p>
+                <form>
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <label for="name" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email`">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <label for="pass" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="pass">
+                        </div>
+                    </div>
+                    <div class="row justify-content-end mt-2">
+                        <div class="col">
+                            <button type="submit" class="btn btn-outline-success">Log In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
