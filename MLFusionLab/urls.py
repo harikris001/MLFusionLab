@@ -21,4 +21,5 @@ from core.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
+    path('text_model/',include('text_model.urls')),
 ]
