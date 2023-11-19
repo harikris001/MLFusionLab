@@ -4,5 +4,5 @@ from . import views
 app_name = 'text_model'
 
 urlpatterns = [
-    path('',views.hello,name='text_model')
+    path('',views.tabular,name='text_model')
 ]
