@@ -7,8 +7,8 @@ def tabular(request):
     if request.method == 'POST':
         csvfile = request.FILES.get('csv_file')
         data = pd.read_csv(csvfile)
-        instance = TableDataFile(csv_file = request.FILES.get('csv_file'))
-        instance.save()
+        # instance = TableDataFile(csv_file = request.FILES.get('csv_file'))
+        # instance.save()
         fields = list(data.columns)
         data = data.to_html(max_rows=6,classes=['table px-4 border border-info-subtle rounded'],justify='center')
         context = {'df_table': data,'columns': fields}

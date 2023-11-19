@@ -10,8 +10,8 @@
         </div>
         <div class="col-md-4 text-center mt-5 ms-5 me-5 border border-warning-subtle rounded-4 p-4">
             <h4>Join the Revolution</h4>
-            <p class="display-5">New User?</p> <a href="#" class="btn btn-primary d-inline">Join Now</a><br/><br/><br/>
-            <p class="fw-5 fw-bold d-inline">Already a User....</p> <a href="#" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login</a>
+            <p class="display-5">New User?</p> <a href="{% url 'core:signup' %}" class="btn btn-primary d-inline">Join Now</a><br/><br/><br/>
+            <p class="fw-5 fw-bold d-inline">Already a User....</p> <a href="{% url 'core:login' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login</a>
         </div>
     </div>
 </div>

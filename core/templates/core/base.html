@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>ML FusionLab | {% block title %}{% endblock %} </title>
+    <title>{% block title %}{% endblock %} | ML FusionLab</title>
 </head>
 <body>
     <header style="border-bottom: 1px solid rgb(30, 244, 255);">
@@ -37,12 +37,16 @@
     </header>
     {% block content %}
     
-    {% endblock %}
-    <footer>
-      <div class="container-fluid fixed-bottom" style="background-color: rgba(176, 176, 255, 0.184);border-top: 1px solid rgb(30, 244, 255) ;">
+    {% endblock content %}
+    {% block script %}
+
+    {% endblock script %}
+    <!-- just to give some spacing -->
+    <footer class="mt-5">
+      <div class="footer fixed-bottom mt-5" style="background-color: rgba(176, 176, 255, 0.184);border-top: 1px solid rgb(30, 244, 255) ;">
         ML FusionLab
         <div class="container-fluid">
-          <a href="#">Home</a>
+          <a href="{% url 'core:index' %}">Home</a>
         </div>
       </div>
     </footer>
