@@ -18,10 +18,11 @@
           </p>
           <p class="card-text text-body-secondary ">Access to the best machine learning models online</p>
           <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row justify-content-center">
               <div class="col-10">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="username">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
               </div>
             </div>
             <div class="row justify-content-center mt-4">

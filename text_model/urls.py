@@ -5,5 +5,6 @@ app_name = 'text_model'
 
 urlpatterns = [
     path('',views.tabular,name='tabular'),
-    path('tag/',views.tag,name='tag')
+    path('regression/',views.regression,name='regression'),
+    path('results/',views.training,name='training'),
 ]

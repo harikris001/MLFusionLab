@@ -1,4 +1,7 @@
 from django.db import models
 
-class TableDataFile(models.Model):
-    csv_file = models.FileField()
+class Project(models.Model):
+    name = models.CharField(max_length=256)
+    description = models.TextField(blank=True)
+    csv_file = models.FileField(upload_to='uploads/')
+
