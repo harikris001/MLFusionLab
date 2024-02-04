@@ -1,0 +1,133 @@
+{% extends 'core/base.html' %}
+{% block title %}Console{% endblock %}
+
+{% block content %}
+<h2 class="m-3"><span class="fw-bolder h1">Console</span>,Welcome</h2>
+<div class="container-md mt-3 pt-4">
+    <div class="row row-cols-2 row-cols-lg-3 g-4">
+        <div class="col-6 col-lg-3">
+            <div data-bs-toggle="collapse" data-bs-target="#text-info" aria-expanded="false" aria-controls="text-info">
+                <div class="card border border-success" style="height: 16rem;" id="text">
+                    <div class="card-body">
+                        <h5 class="card-title">Text-Based</h5>
+                        <p class="card-text">Craft powerful machine learning models for text analysis. Sentimental
+                            analysis,
+                            Classification and Tagging based modles</p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <p class="text-muted">Click to Explore More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div data-bs-toggle="collapse" data-bs-target="#image-info " aria-expanded="false"
+                aria-controls="image-info">
+                <div class="card border border-success" style="height: 16rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Image-Based</h5>
+                        <p class="card-text">Empower Image-based ML Models to analyze images, detecting objects, scenes,
+                            and
+                            patterns with precision. Classification, detection and segmentation.</p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <p class="text-muted">Click to Explore More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div data-bs-toggle="collapse" data-bs-target="#table-info" aria-expanded="false"
+                aria-controls="table-info">
+                <div class="card border border-success" style="height: 16rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tabular-Based</h5>
+                        <p class="card-text">Process CSV files with ease, for predictions based on Regression,
+                            Clustering
+                            and even future predictions</p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <p class="text-muted">Click to Explore More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div data-bs-toggle="collapse" data-bs-target="#voice-info" aria-expanded="false" aria-controls="voice-info"
+                style="border: none; padding: 0;">
+                <div class="card border border-success" style="height: 16rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Audio-Based</h5>
+                        <p class="card-text">Process sound data, distinguishing speech, music, and other auditory
+                            patterns
+                            with CNNs, RNNs, and WaveNet for emotion detection and other audio tasks</p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <p class="text-muted">Click to Explore More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse card m-3 my-5" id="text-info">
+    <div class="card-body">
+        <h1>Text-Based Models</h1>
+        <p class="fs-6">Intellegent text-based models. We house advanced language models that excel in understanding
+            written text.</p>
+
+        <p class="fs-6">We specialize in leveraging cutting-edge natural language processing (NLP) techniques to decode,
+            understand, and generate text with remarkable precision. From sentiment analysis to language translation and
+            chatbot development, our solutions are tailored to enhance efficiency across diverse industries. Join us as
+            we push the boundaries of text-based machine learning, empowering businesses and researchers to unlock the
+            full potential of textual data in today's dynamic landscape.</p>
+        <a href="#" class="btn btn-primary">Create Models</a>
+    </div>
+</div>
+<div class="collapse card m-3 my-5" id="table-info">
+    <div class="card-body">
+        <h1>Tabular-Based Models</h1>
+        <p class="fs-6">Our highly efficient tabular based models</p>
+        <p class="fs-6">our platform focusing on regression, classification, and clustering - the cornerstone of
+            tabular-based machine learning models. We specialize in harnessing these powerful techniques to predict
+            outcomes, categorize data, and uncover hidden patterns within structured datasets. From optimizing business
+            decisions to identifying trends in data, our solutions cater to various industries seeking accuracy and
+            insight from tabular data. Join us as we delve into the world of tabular-based models, empowering businesses
+            and researchers to make informed decisions and discover actionable insights from structured data.</p>
+        <a href="{% url 'tabular_model:tabular' %}" class="btn btn-primary">Create Models</a>
+    </div>
+</div>
+<div class="collapse card m-3 my-5" id="image-info">
+    <div class="card-body">
+        <h1>Image-Based Models</h1>
+        <p class="fs-6">Train efficent and accurate neural network to perform complex image operations.</p>
+        <p class="fs-6">Our platform dedicated to image-based machine learning models, where we employ efficient and
+            cutting-edge neural
+            network architectures for tasks such as classification, detection, and segmentation. Our focus is on
+            leveraging
+            these advanced techniques to understand, classify, and extract information from visual data with
+            unparalleled
+            accuracy and speed. From recognizing objects to delineating boundaries and identifying intricate details
+            within
+            images, our solutions cater to diverse industries seeking high-performing image analysis tools. Join us as
+            we
+            explore the realm of image-based models, revolutionizing how businesses and researchers extract insights and
+            make informed decisions from visual data in today's fast-evolving landscape</p>
+        <a href="#" class="btn btn-primary">Create Models</a>
+    </div>
+</div>
+<div class="collapse card m-3 my-5" id="voice-info">
+    <div class="card-body">
+        <h1>Audio-Based Models</h1>
+        <p class="fs-6">Best and efficient audio based models.</p>
+        <p class="fs-6">Our platform specializing in audio-based machine learning models, where we deploy advanced
+            algorithms for emotion detection and classification. Our focus is on leveraging cutting-edge techniques to
+            analyze, identify, and classify emotions within audio data with remarkable accuracy and precision. From
+            discerning tones and inflections to recognizing underlying sentiments, our solutions cater to various
+            industries seeking to understand and respond to emotional cues in audio. Join us as we delve into the world
+            of audio-based models, empowering businesses and researchers to unlock the power of emotional insights
+            within sound data, enabling more meaningful interactions and informed decisions.</p>
+        <a href="#" class="btn btn-primary">Create Models</a>
+    </div>
+</div>
+{% endblock content %}
