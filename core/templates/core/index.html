@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block title %}HomePage{% endblock %}
+
+{% block content %}
+<div class="conatiner-sm m-4">
+    <div class="row me-md-5">
+        <div class="col-md-6 justify-content-start">
+            <h3 class="fw-bold h3">ML with few <span class="text-muted">CLICKS</span></h3>
+            <p class="fs-5 mt-5">Empower your AI journey with Ease! Generate powerful machine learning models in just a few clicks, bypassing the complex engineering processes. Unleash the potential of our intutive tool for effortless model creation.</p>
+        </div>
+        <div class="col-md-4 text-center mt-5 ms-5 me-5 border border-warning-subtle rounded-4 p-4">
+            <h4>Join the Revolution</h4>
+            <p class="display-5">New User?</p> <a href="{% url 'core:signup' %}" class="btn btn-primary d-inline">Join Now</a><br/><br/><br/>
+            <p class="fw-5 fw-bold d-inline">Already a User....</p> <a href="{% url 'core:console' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Console</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
