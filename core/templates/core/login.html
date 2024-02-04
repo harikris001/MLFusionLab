@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-fluid" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" alt="Login Image">
+    </div>
+    <div class="col-md-6 mt-5">
+      <div class="card border-info shadow-lg" style="background-color: rgba(176, 176, 255, 0.184)" >
+        <div class="card-body">
+          <h3 class="card-title " >
+            Welcome Back
+          </h3>
+          <p class="card-subtitle ">
+            Login to continue where you left off
+          </p>
+          <p class="card-text text-body-secondary ">Access to the best machine learning models online</p>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+              </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+              <div class="col-10">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pass" name="password">
+              </div>
+            </div>
+            <div class="row justify-content-end mt-3 ">
+              <div class="col-10 text-end m-5 mb-1 mt-1 ">
+                <button type="submit" class="btn btn-outline-success">Log In</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

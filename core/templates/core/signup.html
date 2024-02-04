@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+{% if error %}
+<div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{ error }}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ error_body }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<div class="container-md mt-3 mb-5">
+    <div class="row">
+        <div class="col-10 col-md-5 my-5">
+            <h1 class="display-5">Create With Us...</h1>
+            <p class="lead text-muted fw-bold">Bridging the gap between machine learning and people</p>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-primary my-5 p-4">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        Sign Up Now
+                    </h3>
+                    <h6 class="card-subtitle">
+                        Join and create the best models
+                    </h6>
+                    <p class="card-text text-body-secondary">Access to the best machine learning models online</p>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <div class="col-8 col-md-6">
+                                <label for="name" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="name" name="username" required autocomplete="name">
+                            </div>
+                            <div class="col-8 col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" name="email" required autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-8 col-md-6">
+                                <label for="pass" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="pass" name="password" required>
+                            </div>
+                            <div class="col-8 col-md-6">
+                                <label for="re-pass" class="form-label">Re-enter Password</label>
+                                <input type="password" id="re-pass" class="form-control" name="repassword" required>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end mt-2">
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-outline-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="fw-5 fw-bold d-inline">Already a User....</p> <a href="{% url 'core:console' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login</a>
+{% endblock %}
