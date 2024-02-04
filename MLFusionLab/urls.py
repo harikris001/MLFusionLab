@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
     path('tabular/',include('tabular_model.urls')),
+    path('image_model/',include('image_model.urls')),
 ]
