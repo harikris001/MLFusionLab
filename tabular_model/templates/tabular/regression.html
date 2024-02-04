@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Regression {% endblock title %}
+
+{% block content %}
+<div class="continer m-3">
+  <h1>Tabular-Based Models</h1>
+  <h3 class="display-5 text-secondary">Regression</h3>
+</div>
+
+<div class="container-md">
+  {{ df_table | safe }}
+  {% if columns %}
+  <p class="fs-5 fw-semibold fst-italic">Confirm the specifications:</p>
+  <form method="post" enctype="multipart/form-data" class="mb-3" action="/tabular/results/?pid={{pid}}">
+    {% csrf_token %}
+    <label for="pjt-id" class="form-label w-25">Project ID</label>
+    <input type="number" class="form-control w-25 " disabled value="{{pid}}">
+    {% for col in columns %}
+    <div class="conatiner">
+      <label for="{{col}}" class="form-label w-25">{{col}}</label>
+      <select name="{{col}}" class="mb-4 form-select w-25">
+        <option value="string">String</option>
+        <option value="integer">Integer</option>
+        <option value="float">Float</option>
+        <option value="unwanted">Unwanted</option>
+      </select>
+    </div>
+    {% endfor %}
+    <label for="target" class="form-label w-25">Target attribute</label>
+    <select name="target" id="target" class="form-select w-25">
+      {% for col in columns %}
+      <option value="{{col}}">{{col}}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary mt-2 mb-4">Create Model</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock content %}
