@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Results{% endblock %}
+
+
+{% block content %}
+<div class="container-md">
+    <h1>Results</h1>
+    <p>The model have been trained successfully</p>
+
+    <h1 class="display-4">Comparison of Models</h1>
+    {{ output_df | safe }}
+    <p class="fs-4">After training the best model is <strong class="text-success">{{best_model}}</strong></p>
+    <p class="fs-5">The Score of model is <span class="text-info fw-bold">{{score}}</span></p>
+    <p class="fs-5">The Root Mean Square Error of Model is <span class="text-danger">{{rmse}}</span></p>
+    <a href="{% url: 'text_model:download_model' %}" target="_blank" class="btn btn-success"></a>
+</div>
+{% endblock content %}
