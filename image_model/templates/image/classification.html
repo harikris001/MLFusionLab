@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Image Classification {% endblock title %}
+
+{% block content %}
+<div class="continer m-3">
+  <h1>Image-Based Models</h1>
+  <h3 class="display-5 text-secondary">Image Classification</h3>
+</div>
+
+<div class="conatiner-lg"> 
+    {{ images|safe }}
+</div>
+
+
+
+<div class="container-md">
+    <p class="fs-5 fw-semibold fst-italic">Model Specifications</p>
+    <form method="post" enctype="multipart/form-data" class="mb-3" action="/image_model/results/?pid={{pid}}">
+      {% csrf_token %}
+      <label for="pjt-id" class="form-label w-25">Project ID</label>
+      <input type="number" class="form-control w-25 " disabled value="{{pid}}">
+      <label class="form-label w-25">Charcteristics</label>
+      
+      <button type="submit" class="btn btn-primary mt-2 mb-4">Create Model</button>
+    </form>
+</div>
+{% endblock content %}

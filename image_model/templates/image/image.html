@@ -1,0 +1,158 @@
+{% extends 'core/base.html' %}
+{% block title %}Image Based Models{% endblock %}
+
+
+
+{% block content %}
+<h1>Create New Project</h1>
+<div class="conatiner-md px-4">
+    <div class="row row-cols-md-2">
+        <div class="col-md-6">
+            <h3>Image-Based models</h3>
+            <p class="fs-4">Create a project to access a workspace to create and test your model</p>
+        </div>
+        <div class="col-md-6">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Object-Detection Models.
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>These are Object-Detection Models.</strong> Object detection models, integral to computer vision, employ advanced algorithms to locate and identify entities within images. Excelling in recognizing diverse objects, they provide crucial spatial information for applications like image classification and autonomous navigation.
+                            <br>
+                            <button type="button" class="btn btn-info m-2" id="detection"
+                                onclick="detectionForm()">Create Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Classification Models
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>These are classification based models.</strong> Image classification models in computer vision use advanced algorithms to categorize images based on content, excelling in discerning patterns for applications like facial recognition and medical diagnosis. Their proficiency lies in accurately assigning predefined labels, facilitating efficient organization and analysis.
+                            <br>
+                            <button type="button" class="btn btn-info" id="classification"
+                                onclick="classificationForm()">Create Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Segmentation Models
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>These are Segmentation based models.</strong> Segmentation models in computer vision use advanced algorithms to partition images, categorizing specific features. Essential for tasks like medical imaging, they excel in providing detailed spatial information for accurate analysis, precisely delineating boundaries for fine-grained interpretation.
+                            <br>
+                            <button type="button" class="btn btn-info" id="segmentation"
+                                onclick="segmentationForm()">Create Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-6">
+            <form method="post" id="detection-form" class="border border-primary-subtle rounded p-2" style="display: none;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h4>Object-Detection Project details</h4>
+                <p class="fs-6 text-muted">Give details for creating a Object-Detection based project</p>
+                <label for="project-type" class="form-label">Project Type:</label>
+                <select name="project-type" id="project-type" class="form-select" de>
+                    <option value="detection" selected>Detection</option>
+                    <option value="segmentation">Segmentation</option>
+                    <option value="classification">Classification</option>
+                </select>
+                <label for="project-name" class="form-label">Project Name:</label>
+                <input type="text" class="form-control" id="project-name" name="project-name">
+                <label for="project-description" class="form-label">Description</label>
+                <textarea name="project-description" id="project-description" rows="3" class="form-control"></textarea>
+                <input name="dataset" type="file" id="dataset" class="form-control my-2" />
+                <input type="submit" class="btn btn-outline-info m-2" value="Create Project">
+            </form>
+            <form method="post" enctype="multipart/form" id="classification-form" class="border border-primary-subtle rounded p-2" style="display: none;">
+                {% csrf_token %}
+                <h4>Classification Project details</h4>
+                <p class="fs-6 text-muted">Give details for creating Classification based project</p>
+                <label for="project-type" class="form-label">Project Type:</label>
+                <select name="project-type" id="project-type" class="form-select" de>
+                    <option value="detection">Detection</option>
+                    <option value="segmentation">Segmentation</option>
+                    <option value="classification" selected>Classification</option>
+                </select>
+                <label for="project-name" class="form-label">Project Name:</label>
+                <input type="text" class="form-control" id="project-name" name="project-name" required>
+                <label for="project-description" class="form-label">Description</label>
+                <textarea name="project-description" id="project-description" rows="3" class="form-control"></textarea>
+                <input name="dataset" type="file" id="dataset" class="form-control my-2" required/>
+                <input type="submit" class="btn btn-outline-info m-2" value="Create Project">
+            </form>
+            <form method="post" enctype="multipart/form-data" id="segmentation-form" class="border border-primary-subtle rounded p-2" style="display: none;">
+                {% csrf_token %}
+                <h4>Segmentation Project details</h4>
+                <p class="fs-6 text-muted">Give details for creating Segmentation based project</p>
+                <label for="project-type" class="form-label">Project Type:</label>
+                <select name="project-type" id="project-type" class="form-select" de>
+                    <option value="detection">Detection</option>
+                    <option value="segmentation" selected>Segmentation</option>
+                    <option value="classification">Classification</option>
+                </select>
+                <label for="project-name" class="form-label">Project Name:</label>
+                <input type="text" class="form-control" id="project-name" name="project-name" required>
+                <label for="project-description" class="form-label">Description</label>
+                <textarea name="project-description" id="project-description" rows="3" class="form-control"></textarea>
+                <input name="dataset" type="file" id="dataset" class="form-control my-2" required/>
+                <input type="submit" class="btn btn-outline-info m-2" value="Create Project">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+    function detectionForm() {
+        var x = document.getElementById("detection-form");
+        var y = document.getElementById("classification-form");
+        var z = document.getElementById("segmentation-form");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+            z.style.display = "none"
+        }
+    }
+    function classificationForm() {
+        var x = document.getElementById("detection-form");
+        var y = document.getElementById("classification-form");
+        var z = document.getElementById("segmentation-form");
+        if (y.style.display === "none") {
+            y.style.display = "block";
+            x.style.display = "none";
+            z.style.display = "none"
+        }
+    }
+    function segmentationForm() {
+        var x = document.getElementById("detection-form");
+        var y = document.getElementById("classification-form");
+        var z = document.getElementById("segmentation-form");
+        if (z.style.display === "none") {
+            z.style.display = "block";
+            x.style.display = "none";
+            y.style.display = "none"
+        }
+    }
+</script>
+{% endblock script %}
