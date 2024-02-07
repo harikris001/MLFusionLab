@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %} Image Classification {% endblock title %}
+{% block title %} Image Classification {% endblock title %} 
 
 {% block content %}
 <div class="continer m-3">
@@ -8,21 +8,34 @@
   <h3 class="display-5 text-secondary">Image Classification</h3>
 </div>
 
-<div class="conatiner-lg"> 
-    {{ images|safe }}
-</div>
-
-
+<div class="conatiner-lg">{{ images|safe }}</div>
 
 <div class="container-md">
-    <p class="fs-5 fw-semibold fst-italic">Model Specifications</p>
-    <form method="post" enctype="multipart/form-data" class="mb-3" action="/image_model/results/?pid={{pid}}">
-      {% csrf_token %}
-      <label for="pjt-id" class="form-label w-25">Project ID</label>
-      <input type="number" class="form-control w-25 " disabled value="{{pid}}">
-      <label class="form-label w-25">Charcteristics</label>
-      
-      <button type="submit" class="btn btn-primary mt-2 mb-4">Create Model</button>
-    </form>
+  <p class="fs-5 fw-semibold fst-italic">Model Specifications</p>
+  <form
+    method="post"
+    enctype="multipart/form-data"
+    class="mb-3"
+    action="/image_model/results/?pid={{pid}}"
+  >
+    {% csrf_token %}
+    <label for="pjt-id" class="form-label w-25">Project ID</label>
+    <input type="number" class="form-control w-25" disabled value="{{pid}}" />
+    <p class="fw-bold">Charcteristics</p>
+    <label for="size" class="form-label w-25">Size</label>
+    <select id="size" name="size" class="form-select w-25" aria-label="select example">
+      <option vlaue="small"> < 40MB</option> 
+      <option value="medium"> 40-80 MB</option>
+      <option value="large"> > 80 MB</option>
+    </select>
+    <label for="size" class="form-label w-25">Priority</label>
+    <select id="priority" name="priority" class="form-select w-25" aria-label="select example">
+      <option value="latency">Latency</option>
+      <option value="accuracy">Accuracy</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-2 mb-4">
+      Create Model
+    </button>
+  </form>
 </div>
 {% endblock content %}

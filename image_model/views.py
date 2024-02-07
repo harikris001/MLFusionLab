@@ -68,11 +68,13 @@ def classify(request):
             ax[i].set_title(title, fontsize = 7)
 
             fig.suptitle("Sample input data")
-
+        
+        # Converting Images to IOBytes
         img_bytes = io.StringIO()
         plt.savefig(img_bytes, format='svg')
         img_bytes.seek(0)
 
+        # Converting to Context
         img_bytes = img_bytes.getvalue()
         context = {'pid':pid, 'images':img_bytes}
         return render(request, 'image/classification.html', context)
