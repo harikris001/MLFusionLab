@@ -82,3 +82,12 @@ def classify(request):
 
 def segmentation(request):
     return render(request,'image/segementation.html')
+
+def training(request):
+    operation = request.GET.get('type')
+    if operation == 'classify':
+        priority = request.POST.get('priority')
+        size = request.POST.get('size')
+        if size=='small':
+            pass
+    return render(request,'results.html')

@@ -20,7 +20,7 @@
   >
     {% csrf_token %}
     <label for="pjt-id" class="form-label w-25">Project ID</label>
-    <input type="number" class="form-control w-25" disabled value="{{pid}}" />
+    <input type="number" class="form-control w-25" disabled value="{{pid}}" id="pjt-id"/>
     <p class="fw-bold">Charcteristics</p>
     <label for="size" class="form-label w-25">Size</label>
     <select id="size" name="size" class="form-select w-25" aria-label="select example">
@@ -33,6 +33,8 @@
       <option value="latency">Latency</option>
       <option value="accuracy">Accuracy</option>
     </select>
+    <label for="output-class" class="form-label w-25">Output Classes</label>
+    <input type="number" class="form-control w-25" id="output-class"/>
     <button type="submit" class="btn btn-primary mt-2 mb-4">
       Create Model
     </button>
