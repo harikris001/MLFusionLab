@@ -1,4 +1,5 @@
 import torch
+import os
 from torch import nn
 
 
@@ -15,6 +16,7 @@ torch.cuda.manual_seed(42)
 
 def create_train_data():
     train_transform = transforms.Compose([
+        transforms.RandomHorizontalFlip(p=0.5),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225],)
@@ -40,9 +42,7 @@ def create_test_data():
     return test_loader
 
 
-
-
-def train_step(model, train_data, loss_fn, optimizer):
+def train_step(model : nn.Module, train_data : DataLoader, loss_fn:torch.nn.Module, optimizer: torch.optim.Optimizer):
 
     train_loss, train_acc = 0.0, 0.0
 
@@ -93,7 +93,7 @@ def test_step(model, test_data, loss_fn):
     test_acc = test_acc / len(test_data)
     return test_loss, test_acc
 
-def train_models(model, train_data, test_data, epochs):
+def train_models(model : nn.Module , train_data : DataLoader, test_data: DataLoader, epochs: int):
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -105,9 +105,12 @@ def train_models(model, train_data, test_data, epochs):
     for epoch in range(epochs):
 
         # Training Step
-        metrics['train_acc'], metrics['train_acc'] = train_step(model=model, train_data=train_data, loss_fn=loss_fn, optimizer=optimizer)
+        metrics['train_loss'], metrics['train_acc'] = train_step(model=model, train_data=train_data, loss_fn=loss_fn, optimizer=optimizer)
         
         # Testing Step
         metrics['test_loss'], metrics['test_acc'] = test_step(model=model, test_data=test_data, loss_fn=loss_fn)
 
-    return  model, metrics
+        model_path = os.path.join('models', "Densenet121"+".pth")
+        torch.save(model.state_dict(), model_path)
+
+    return metrics

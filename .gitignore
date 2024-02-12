@@ -141,3 +141,4 @@ GitHub.sublime-settings
 *.csv
 data/*
 *.zip
+*.pth

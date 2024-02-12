@@ -6,6 +6,9 @@ import io
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
 
+from .classification_models import *
+from .training_backend import *
+
 
 transform = transforms.Compose([
     transforms.RandomHorizontalFlip(p=0.5),
@@ -88,6 +91,11 @@ def training(request):
     if operation == 'classify':
         priority = request.POST.get('priority')
         size = request.POST.get('size')
-        if size=='small':
-            pass
-    return render(request,'results.html')
+        classes = request.POST.get('classes')
+        model= densenet121_model(output_classes=int(classes))
+        train_data = create_train_data()
+        test_data = create_test_data()
+        metrics = train_models(model=model, train_data= train_data, test_data= test_data, epochs=10)
+        print(metrics)
+        
+    return render(request,'image/results.html')

@@ -16,7 +16,7 @@
     method="post"
     enctype="multipart/form-data"
     class="mb-3"
-    action="/image_model/results/?pid={{pid}}"
+    action="/image_model/results/?pid={{pid}}&type=classify"
   >
     {% csrf_token %}
     <label for="pjt-id" class="form-label w-25">Project ID</label>
@@ -34,7 +34,7 @@
       <option value="accuracy">Accuracy</option>
     </select>
     <label for="output-class" class="form-label w-25">Output Classes</label>
-    <input type="number" class="form-control w-25" id="output-class"/>
+    <input type="number" class="form-control w-25" id="output-class" name='classes'/>
     <button type="submit" class="btn btn-primary mt-2 mb-4">
       Create Model
     </button>
