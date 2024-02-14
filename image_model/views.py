@@ -89,13 +89,50 @@ def segmentation(request):
 def training(request):
     operation = request.GET.get('type')
     if operation == 'classify':
-        priority = request.POST.get('priority')
-        size = request.POST.get('size')
-        classes = request.POST.get('classes')
-        model= densenet121_model(output_classes=int(classes))
+        metrics = {}
         train_data = create_train_data()
         test_data = create_test_data()
-        metrics = train_models(model=model, train_data= train_data, test_data= test_data, epochs=10)
-        print(metrics)
+        size = request.POST.get('size')
+        classes = request.POST.get('classes')
+        if size == 'small':
+            priority = request.POST.get('priority')
+
+            if priority == 'latency':
+                metrics['MobileNet_V3_small'] = train_models(model=MobileNetV3_small(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['MNASet_1'] = train_models(model=mnasNet1(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['ShuffleNet_v2_X1'] = train_models(model=shuffnetv2_x0(output_classes=int(classes)), train_data=train_data, test_data=test_data, epochs=10)
+            
+            else:
+                metrics['MobileNet_V3_small'] = train_models(model=MobileNetV3_small(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['MNASet_1'] = train_models(model=mnasNet1(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['ShuffleNet_v2_X1'] = train_models(model=shuffnetv2_x0(output_classes=int(classes)), train_data=train_data, test_data=test_data, epochs=10)
+                metrics['DenseNet121'] = train_models(model=densenet121_model(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['EfficientNet_B0'] = train_models(model=effnetb0(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+
+        elif size == 'medium':
+            priority = request.POST.get('priority')
+
+            if priority == 'latency':
+                metrics['GoogleNet'] = train_models(model=googleNet(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['RegNet_Y_16GF'] = train_models(model=regnetY16gf(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['ResNet18'] = train_models(model=resnet18(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+            
+            else:
+                metrics['EfficientNet_B3'] = train_models(model=effnetb3(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['DenseNet201'] = train_models(model=densenet201(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+        
+        else:
+            priority = request.POST.get('priority')
+
+            if priority == 'latency':
+                metrics['GoogleNet'] = train_models(model=googleNet(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['RegNet_Y_16GF'] = train_models(model=regnetY16gf(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['ResNet18'] = train_models(model=resnet18(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+            
+            else:
+                metrics['EfficientNet_B3'] = train_models(model=effnetb3(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+                metrics['DenseNet201'] = train_models(model=densenet201(output_classes=int(classes)),train_data= train_data, test_data= test_data, epochs=10)
+
+
         
     return render(request,'image/results.html')
