@@ -93,7 +93,7 @@ def test_step(model, test_data, loss_fn):
     test_acc = test_acc / len(test_data)
     return test_loss, test_acc
 
-def train_models(model : nn.Module , train_data : DataLoader, test_data: DataLoader, epochs: int):
+def train_models(model : nn.Module , train_data : DataLoader, test_data: DataLoader, epochs: int, save_name: str):
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -110,7 +110,7 @@ def train_models(model : nn.Module , train_data : DataLoader, test_data: DataLoa
         # Testing Step
         metrics['test_loss'], metrics['test_acc'] = test_step(model=model, test_data=test_data, loss_fn=loss_fn)
 
-        model_path = os.path.join('models', "Densenet121"+".pth")
+        model_path = os.path.join('models', save_name +".pth")
         torch.save(model.state_dict(), model_path)
 
     return metrics
