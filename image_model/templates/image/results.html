@@ -1,7 +1,36 @@
 {% extends 'core/base.html' %}
 
-{% block title %} Training Results {% endblock title %} 
+{% block title %} Training Results | {{ operation }} {% endblock title %} 
 
 {% block content %}
-Hello World
-{% endblock %}
+<div class="container-md">
+    <h1>Results</h1>
+    <p>The model have been trained successfully</p>
+
+    <h1 class="display-4">Comparison of Models</h1>
+
+    {% for metric, data in metrics.items %}
+        <h4>{{ metric }}</h4>
+        {% for key, value in data.items %}
+        <p style="display:inline; padding: 10px;">{{ key }} : <span>{{ value | floatformat:2 }}</span> </p> 
+        {% endfor %}
+    {% endfor %}
+
+    <h3 class="mt-5">Download your Model</h3> 
+
+    <form method="get"
+    enctype="multipart/form-data"
+    class="mt-3"
+    action="/image_model/download_image_model/">
+        <label for="model" class="form-label w-25">Model Name</label>
+        <select id="model" name="model" class="form-select w-25" aria-label="select example">
+            {% for metric,value in metrics.items %}
+            <option value="{{ metric }}">{{ metric }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Download" class="mt-5 btn btn-success">
+    </form>
+
+</div>
+{% endblock content %}

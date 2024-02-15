@@ -84,12 +84,12 @@
                 <input name="dataset" type="file" id="dataset" class="form-control my-2" />
                 <input type="submit" class="btn btn-outline-info m-2" value="Create Project">
             </form>
-            <form method="post" enctype="multipart/form" id="classification-form" class="border border-primary-subtle rounded p-2" style="display: none;">
+            <form method="post" enctype="multipart/form-data" id="classification-form" class="border border-primary-subtle rounded p-2" style="display: none;">
                 {% csrf_token %}
                 <h4>Classification Project details</h4>
                 <p class="fs-6 text-muted">Give details for creating Classification based project</p>
                 <label for="project-type" class="form-label">Project Type:</label>
-                <select name="project-type" id="project-type" class="form-select" de>
+                <select name="project-type" id="project-type" class="form-select">
                     <option value="detection">Detection</option>
                     <option value="segmentation">Segmentation</option>
                     <option value="classification" selected>Classification</option>
@@ -115,7 +115,7 @@
                 <input type="text" class="form-control" id="project-name" name="project-name" required>
                 <label for="project-description" class="form-label">Description</label>
                 <textarea name="project-description" id="project-description" rows="3" class="form-control"></textarea>
-                <input name="dataset" type="file" id="dataset" class="form-control my-2" required/>
+                <input name="dataset" type="file" id="dataset" class="form-control my-2" name="dataset" required/>
                 <input type="submit" class="btn btn-outline-info m-2" value="Create Project">
             </form>
         </div>
